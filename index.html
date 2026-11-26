@@ -23,7 +23,7 @@
   <link rel="icon" type="image/svg+xml" href="assets/logos/lazo-circulo-marron.svg">
   <link rel="preload" href="assets/fonts/jost.woff" as="font" type="font/woff" crossorigin>
   <link rel="preload" href="assets/fonts/cormorant-garamond.woff" as="font" type="font/woff" crossorigin>
-  <link rel="stylesheet" href="css/styles.css?v=2026-11-17-zapatos">
+  <link rel="stylesheet" href="css/styles.css?v=2026-11-26-regalo">
 </head>
 <body>
   <a class="skip" href="#contenido">Saltar al contenido</a>
@@ -106,11 +106,18 @@
           <p class="como-texto">No se trata de convertirte en otra persona ni de llenarte de ropa nueva. Miramos qué tienes, qué necesitas, qué te gusta, cómo es tu vida y cómo te quieres sentir. Para abrir el armario y decir: «Vale, hoy me pongo esto»</p>
         </div>
         <div class="servicios" id="servicios-lista">
-          <p class="rotulo">Tres servicios</p>
-          <div class="tabs" role="tablist" aria-label="Servicios">
-            <button class="tab-servicio" role="tab" id="tab-estandar" aria-controls="panel-estandar" aria-selected="true">Estándar</button>
-            <button class="tab-servicio" role="tab" id="tab-premium" aria-controls="panel-premium" aria-selected="false" tabindex="-1">Premium</button>
-            <button class="tab-servicio" role="tab" id="tab-puntual" aria-controls="panel-puntual" aria-selected="false" tabindex="-1">Puntual</button>
+          <p class="rotulo">Los servicios</p>
+          <!-- Dos selectores, una sola opción activa entre los cinco -->
+          <div class="selectores">
+            <div class="tabs" role="tablist" aria-label="Asesorías">
+              <button class="tab-servicio" role="tab" id="tab-estandar" aria-controls="panel-estandar" aria-selected="true">Estándar</button>
+              <button class="tab-servicio" role="tab" id="tab-premium" aria-controls="panel-premium" aria-selected="false" tabindex="-1">Premium</button>
+              <button class="tab-servicio" role="tab" id="tab-puntual" aria-controls="panel-puntual" aria-selected="false" tabindex="-1">Puntual</button>
+            </div>
+            <div class="tabs tabs-regalo" role="tablist" aria-label="Para regalar">
+              <button class="tab-servicio" role="tab" id="tab-regala-look" aria-controls="panel-regala-look" aria-selected="false" tabindex="-1">Regala look</button>
+              <button class="tab-servicio" role="tab" id="tab-regala-vale" aria-controls="panel-regala-vale" aria-selected="false" tabindex="-1">Regala vale</button>
+            </div>
           </div>
 
           <div class="panel" role="tabpanel" id="panel-estandar" aria-labelledby="tab-estandar">
@@ -181,6 +188,45 @@
                 <a class="btn btn-secondary" href="https://wa.me/34651057196?text=Hola%20Roc%C3%ADo%2C%20tengo%20un%20evento%20y%20me%20gustar%C3%ADa%20que%20me%20ayudaras" target="_blank" rel="noopener">Cuéntame tu evento</a>
               </div>
             </div>
+          </article>
+          </div>
+
+          <div class="panel" role="tabpanel" id="panel-regala-look" aria-labelledby="tab-regala-look">
+          <article class="evento evento-regalo">
+            <div class="evento-texto">
+              <h2 class="h1">Regala un look completo</h2>
+              <p class="regalo-entrada">¿Te gustaría regalar ropa, pero no sabes muy bien qué elegir, cómo combinarla o dónde encontrarla?</p>
+              <p>Este año te lo pongo fácil. En lugar de regalar prendas sueltas, ¿por qué no regalar un look completo, pensado especialmente para esa persona?</p>
+              <p>Tú me cuentas un poquito sobre ella, su estilo y el presupuesto del que dispones. Yo me encargo del resto.</p>
+              <p>Recibirás una guía visual con todas las prendas y complementos perfectamente combinados, junto con los enlaces directos para comprarlos.</p>
+              <p>Sin recorrer tiendas, sin perder horas buscando en internet y sin complicarte la vida.</p>
+              <p class="regalo-cierre">Un regalo pensado de principio a fin, a un solo clic.</p>
+              <div class="actions">
+                <a class="btn btn-primary" href="https://wa.me/34651057196?text=Hola%20Roc%C3%ADo%2C%20me%20gustar%C3%ADa%20regalar%20un%20look" target="_blank" rel="noopener">Regalar un look</a>
+              </div>
+            </div>
+            <figure class="regalo-foto">
+              <img src="assets/images/web/regala-look-01.jpg" alt="Ejemplo de guía de look: chaqueta marrón, pañuelo burdeos, blusa blanca de volantes, jersey gris, vaqueros wide leg y mocasines negros, cada prenda con su enlace de compra" width="1000" height="1415" loading="lazy">
+              <figcaption>Ejemplo de guía de look</figcaption>
+            </figure>
+          </article>
+          </div>
+
+          <div class="panel" role="tabpanel" id="panel-regala-vale" aria-labelledby="tab-regala-vale">
+          <article class="evento evento-regalo">
+            <div class="evento-texto">
+              <h2 class="h1">Regala una asesoría</h2>
+              <p>Si prefieres que viva la experiencia completa, regálale una asesoría de estilismo de armario.</p>
+              <p>Descarga el vale, marca el servicio que quieres regalar —Estándar, Premium o Puntual— y escribe su nombre y una dedicatoria. Puedes imprimirlo o enviárselo por el móvil.</p>
+              <p>Escríbeme para reservar el regalo y, cuando quiera, nos ponemos en marcha.</p>
+              <div class="actions">
+                <a class="btn btn-primary" href="assets/images/vale-regalo-zapatosdecharolconlazo.png" download="vale-regalo-zapatosdecharolconlazo.png">Descargar el vale</a>
+                <a class="btn btn-secondary" href="https://wa.me/34651057196?text=Hola%20Roc%C3%ADo%2C%20me%20gustar%C3%ADa%20regalar%20una%20asesor%C3%ADa" target="_blank" rel="noopener">Reservar el regalo</a>
+              </div>
+            </div>
+            <figure class="regalo-vale">
+              <img src="assets/images/web/vale-regalo.jpg" alt="Vale de regalo por una asesoría de estilismo de armario, con espacio para el nombre, el servicio regalado y una dedicatoria" width="1200" height="800" loading="lazy">
+            </figure>
           </article>
           </div>
         </div>
@@ -409,6 +455,29 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=2026-11-17-zapatos"></script>
+  <!-- POPUP DE NAVIDAD: se muestra del 26/11/2026 al 06/01/2027 (fechas en data-desde / data-hasta) -->
+  <dialog class="popup-regalo" id="popup-regalo" data-desde="2026-11-26" data-hasta="2027-01-06" aria-labelledby="popup-titulo">
+    <button type="button" class="popup-cerrar" data-cerrar aria-label="Cerrar"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+    <img class="popup-lazo" src="assets/logos/lazo-marron.svg" alt="" width="80" height="38">
+    <p class="rotulo">Esta Navidad</p>
+    <h2 class="h1" id="popup-titulo" tabindex="-1" autofocus>Regala estilo</h2>
+    <p class="popup-intro">Un regalo pensado de principio a fin. Elige cómo quieres hacerlo:</p>
+    <div class="popup-opciones">
+      <a class="popup-opcion" href="#regala-look" data-ir="tab-regala-look">
+        <span class="popup-img"><img src="assets/images/web/regala-look-01.jpg" alt="" width="1000" height="1415" loading="lazy"></span>
+        <span class="popup-nombre">Regala un look</span>
+        <span class="popup-desc">Un look completo para esa persona, con los enlaces para comprarlo.</span>
+        <span class="popup-ver">Ver cómo funciona</span>
+      </a>
+      <a class="popup-opcion" href="#regala-vale" data-ir="tab-regala-vale">
+        <span class="popup-img popup-img-vale"><img src="assets/images/web/vale-regalo.jpg" alt="" width="1200" height="800" loading="lazy"></span>
+        <span class="popup-nombre">Regala un vale</span>
+        <span class="popup-desc">Una asesoría de armario, con un vale descargable y tu dedicatoria.</span>
+        <span class="popup-ver">Ver el vale</span>
+      </a>
+    </div>
+  </dialog>
+
+  <script src="js/main.js?v=2026-11-26-regalo"></script>
 </body>
 </html>
