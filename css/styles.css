@@ -1045,6 +1045,32 @@ p { margin: 0; }
   .precio-promo { margin-bottom: var(--s3); }
 }
 
+/* Cuatro servicios: Regala un look primero, en rejilla de 2 × 2 */
+@media (min-width: 961px) {
+  .precios-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.precio-regalo { background: var(--arena-clara); border: 1px solid var(--arena); color: var(--cafe); }
+.precio-regalo .precio-nombre { color: var(--marron); }
+.precio-extra {
+  margin: calc(var(--s2) * -1) 0 var(--s4);
+  font-size: 14px; line-height: 22px; color: var(--marron);
+}
+.precio-extra strong { font-weight: 500; color: var(--cafe); }
+.precios-aviso {
+  margin-top: var(--s4); max-width: 1000px;
+  font-size: 14px; line-height: 22px; color: var(--marron);
+  padding-left: var(--s2); border-left: 1px solid var(--topo);
+}
+.precios-aviso + .precios-nota { margin-top: var(--s2); }
+.pasos-sueltos {
+  margin-top: var(--s4); padding-top: var(--s3);
+  border-top: 1px solid var(--linea);
+  font-size: 16px; line-height: 26px; color: var(--marron);
+}
+.pasos-sueltos strong, .regalo-precio strong { font-weight: 500; color: var(--cafe); }
+.regalo-precio { font-size: 14px; line-height: 22px; color: var(--marron); }
+.regalo-precio strong { font-family: var(--display); font-size: 24px; }
+
 /* Promoción sobre fondo café (Premium) */
 .precio-premium .precio-promo { background: var(--lino); color: var(--cafe); }
 .precio-premium .precio-antes { opacity: .6; }
