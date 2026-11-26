@@ -23,7 +23,7 @@
   <link rel="icon" type="image/svg+xml" href="assets/logos/lazo-circulo-marron.svg">
   <link rel="preload" href="assets/fonts/jost.woff" as="font" type="font/woff" crossorigin>
   <link rel="preload" href="assets/fonts/cormorant-garamond.woff" as="font" type="font/woff" crossorigin>
-  <link rel="stylesheet" href="css/styles.css?v=2026-11-26-regalo">
+  <link rel="stylesheet" href="css/styles.css?v=2026-11-26-precios">
 </head>
 <body>
   <a class="skip" href="#contenido">Saltar al contenido</a>
@@ -201,6 +201,7 @@
               <p>Recibirás una guía visual con todas las prendas y complementos perfectamente combinados, junto con los enlaces directos para comprarlos.</p>
               <p>Sin recorrer tiendas, sin perder horas buscando en internet y sin complicarte la vida.</p>
               <p class="regalo-cierre">Un regalo pensado de principio a fin, a un solo clic.</p>
+              <p class="regalo-precio"><strong>150 €</strong> · Asesoría, preparación y búsqueda de las prendas. El precio de las prendas no está incluido.</p>
               <div class="actions">
                 <a class="btn btn-primary" href="https://wa.me/34651057196?text=Hola%20Roc%C3%ADo%2C%20me%20gustar%C3%ADa%20regalar%20un%20look" target="_blank" rel="noopener">Regalar un look</a>
               </div>
@@ -355,11 +356,18 @@
           <h2 class="h1">Elige tu servicio</h2>
         </div>
         <div class="precios-grid">
+          <article class="precio precio-regalo">
+            <p class="precio-nombre">Regala un look</p>
+            <p class="precio-servicio">Asesoría, preparación y búsqueda de las prendas</p>
+            <p class="precio-cifra"><span class="precio-ahora">150 €</span></p>
+            <a class="btn btn-secondary" href="#regala-look">Ver cómo funciona</a>
+          </article>
           <article class="precio precio-estandar" data-promo-hasta="2026-12-31">
             <p class="precio-nombre">Estándar</p>
             <p class="precio-servicio">Asesoría de armario en tres pasos</p>
             <p class="precio-cifra"><span class="precio-antes" aria-label="Antes 300 euros">300 €</span> <span class="precio-ahora">200 €</span></p>
             <p class="precio-promo">Oferta hasta el 31/12/2026</p>
+            <p class="precio-extra">Cada paso por separado: <strong>130 €</strong></p>
             <a class="btn btn-secondary" href="#reserva">Reserva tu sesión</a>
           </article>
           <article class="precio precio-premium" data-promo-hasta="2026-12-31">
@@ -376,6 +384,7 @@
             <a class="btn btn-secondary" href="#reserva">Reserva tu sesión</a>
           </article>
         </div>
+        <p class="precios-aviso">Los precios de los servicios no incluyen el precio de las prendas ni de los productos.</p>
         <p class="precios-nota"><a href="#servicios">Ver qué incluye cada servicio</a></p>
       </div>
     </section>
@@ -461,7 +470,7 @@
     <img class="popup-lazo" src="assets/logos/lazo-marron.svg" alt="" width="80" height="38">
     <p class="rotulo">Esta Navidad</p>
     <h2 class="h1" id="popup-titulo" tabindex="-1" autofocus>Regala estilo</h2>
-    <p class="popup-intro">Y conviértete en el mejor paje real sin moverte de casa.</p>
+    <p class="popup-intro">Un regalo pensado de principio a fin. Elige cómo quieres hacerlo:</p>
     <div class="popup-opciones">
       <a class="popup-opcion" href="#regala-look" data-ir="tab-regala-look">
         <span class="popup-img"><img src="assets/images/web/regala-look-01.jpg" alt="" width="1000" height="1415" loading="lazy"></span>
@@ -478,6 +487,6 @@
     </div>
   </dialog>
 
-  <script src="js/main.js?v=2026-11-26-regalo"></script>
+  <script src="js/main.js?v=2026-11-26-popup"></script>
 </body>
 </html>
