@@ -164,8 +164,16 @@
       var tab = document.getElementById(idTab);
       if (!tab) return;
       abrir(tab);
-      var y = document.getElementById('servicios-lista').getBoundingClientRect().top + window.pageYOffset - 90;
-      window.scrollTo({ top: y, behavior: 'smooth' });
+      // Salto directo y una corrección después: al bajar desde arriba, la cabecera se queda fija
+      // y recoloca la página, lo que interrumpiría un desplazamiento suave.
+      var destino = document.getElementById('servicios-lista');
+      function ir() {
+        var cab = document.querySelector('.site-header');
+        var margen = (cab ? cab.offsetHeight : 70) + 16;
+        window.scrollTo({ top: destino.getBoundingClientRect().top + window.pageYOffset - margen, behavior: 'instant' });
+      }
+      ir();
+      requestAnimationFrame(function () { ir(); setTimeout(ir, 120); });
     };
     function desdeHash() {
       var id = anclas[location.hash.slice(1)];
