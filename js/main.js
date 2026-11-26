@@ -118,38 +118,94 @@
   })();
 
 
-  // Servicios en pestañas (Estándar abierta al entrar)
+  // Servicios en pestañas (Estándar abierta al entrar).
+  // Hay dos selectores (asesorías y regalos), pero solo una de las cinco opciones queda activa.
   (function () {
-    var lista = document.querySelector('.servicios [role="tablist"]');
-    if (!lista) return;
-    var tabs = Array.prototype.slice.call(lista.querySelectorAll('[role="tab"]'));
+    var listas = document.querySelectorAll('.servicios [role="tablist"]');
+    if (!listas.length) return;
+    var todas = Array.prototype.slice.call(document.querySelectorAll('.servicios [role="tab"]'));
     function abrir(tab, foco) {
-      tabs.forEach(function (t) {
+      todas.forEach(function (t) {
         var activa = t === tab;
         t.setAttribute('aria-selected', activa ? 'true' : 'false');
-        t.tabIndex = activa ? 0 : -1;
         var panel = document.getElementById(t.getAttribute('aria-controls'));
         if (!panel) return;
         panel.hidden = !activa;
         if (activa) { panel.classList.remove('entra'); void panel.offsetWidth; panel.classList.add('entra'); }
       });
+      // cada selector conserva una pestaña enfocable con el tabulador
+      Array.prototype.forEach.call(listas, function (l) {
+        var tabs = Array.prototype.slice.call(l.querySelectorAll('[role="tab"]'));
+        var dentro = tabs.indexOf(tab) !== -1;
+        tabs.forEach(function (t, i) { t.tabIndex = (dentro ? t === tab : i === 0) ? 0 : -1; });
+      });
       if (foco) tab.focus();
     }
-    tabs.forEach(function (t, i) {
-      t.addEventListener('click', function () { abrir(t); });
-      t.addEventListener('keydown', function (e) {
-        var n = null;
-        if (e.key === 'ArrowRight') n = (i + 1) % tabs.length;
-        if (e.key === 'ArrowLeft') n = (i - 1 + tabs.length) % tabs.length;
-        if (e.key === 'Home') n = 0;
-        if (e.key === 'End') n = tabs.length - 1;
-        if (n !== null) { e.preventDefault(); abrir(tabs[n], true); }
+    Array.prototype.forEach.call(listas, function (l) {
+      var tabs = Array.prototype.slice.call(l.querySelectorAll('[role="tab"]'));
+      tabs.forEach(function (t, i) {
+        t.addEventListener('click', function () { abrir(t); });
+        t.addEventListener('keydown', function (e) {
+          var n = null;
+          if (e.key === 'ArrowRight') n = (i + 1) % tabs.length;
+          if (e.key === 'ArrowLeft') n = (i - 1 + tabs.length) % tabs.length;
+          if (e.key === 'Home') n = 0;
+          if (e.key === 'End') n = tabs.length - 1;
+          if (n !== null) { e.preventDefault(); abrir(tabs[n], true); }
+        });
       });
     });
-    tabs.forEach(function (t) {
-      var panel = document.getElementById(t.getAttribute('aria-controls'));
-      if (panel) panel.hidden = t.getAttribute('aria-selected') !== 'true';
+    var inicial = todas.filter(function (t) { return t.getAttribute('aria-selected') === 'true'; })[0] || todas[0];
+    abrir(inicial);
+
+    // Enlaces directos: #regala-look y #regala-vale abren su pestaña y llevan a la sección
+    var anclas = { 'regala-look': 'tab-regala-look', 'regala-vale': 'tab-regala-vale' };
+    window.abrirServicio = function (idTab) {
+      var tab = document.getElementById(idTab);
+      if (!tab) return;
+      abrir(tab);
+      var y = document.getElementById('servicios-lista').getBoundingClientRect().top + window.pageYOffset - 90;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    };
+    function desdeHash() {
+      var id = anclas[location.hash.slice(1)];
+      if (id) window.abrirServicio(id);
+    }
+    window.addEventListener('hashchange', desdeHash);
+    if (location.hash) setTimeout(desdeHash, 50);
+  })();
+
+
+  // Popup de Navidad: solo entre data-desde y data-hasta (ambos incluidos), una vez por visita.
+  // Para verlo en cualquier fecha: añade ?popup a la dirección.
+  (function () {
+    var d = document.getElementById('popup-regalo');
+    if (!d || typeof d.showModal !== 'function') return;
+    var forzar = /[?&]popup\b/.test(location.search);
+    var hoy = new Date();
+    var desde = new Date(d.getAttribute('data-desde') + 'T00:00:00');
+    var hasta = new Date(d.getAttribute('data-hasta') + 'T23:59:59');
+    if (!forzar && (hoy < desde || hoy > hasta)) return;
+    var visto = false;
+    try { visto = sessionStorage.getItem('popup-regalo-visto') === '1'; } catch (e) {}
+    if (visto && !forzar) return;
+
+    function cerrar() { if (d.open) d.close(); }
+    d.addEventListener('close', function () {
+      try { sessionStorage.setItem('popup-regalo-visto', '1'); } catch (e) {}
     });
+    d.querySelector('[data-cerrar]').addEventListener('click', cerrar);
+    // clic fuera de la tarjeta (en el fondo) cierra
+    d.addEventListener('click', function (e) { if (e.target === d) cerrar(); });
+    d.querySelectorAll('[data-ir]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        cerrar();
+        if (window.abrirServicio) window.abrirServicio(a.getAttribute('data-ir'));
+      });
+    });
+    // aparece a los pocos segundos, sin tapar la entrada del logotipo
+    setTimeout(function () { if (!d.open) d.showModal(); }, forzar ? 600 : 3500);
   })();
 
 
